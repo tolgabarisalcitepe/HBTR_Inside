@@ -14,7 +14,7 @@ public class ExtendedListFragment extends ListFragment
 {
 
     protected ExtendedApplication m_App;
-    protected ExtendedAppCompatActivity m_Act;
+    public ExtendedAppCompatActivity m_Act;
     @Override
     public void onResume()
     {

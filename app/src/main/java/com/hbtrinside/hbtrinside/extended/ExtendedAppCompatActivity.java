@@ -2,21 +2,12 @@ package com.hbtrinside.hbtrinside.extended;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.hbtrinside.hbtrinside.R;
-import com.hbtrinside.hbtrinside.core.Core;
-import com.hbtrinside.hbtrinside.core.Sonuc;
-import com.hbtrinside.hbtrinside.model.gen_personel;
-import com.hbtrinside.hbtrinside.model.initialobject.PersonelBilgisiGetirInitParameter;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.hbtrinside.hbtrinside.model.ParameterObjects.gen_personel;
 
 public class ExtendedAppCompatActivity extends AppCompatActivity
 {

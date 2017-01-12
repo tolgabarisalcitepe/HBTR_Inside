@@ -27,17 +27,6 @@
             android:textSize="15sp"
             android:layout_marginLeft="70dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="14 min ago"
-            android:id="@+id/minute"
-            android:textSize="10sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="180dp"
-            android:layout_alignTop="@+id/namesurname" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +40,17 @@
         android:layout_alignLeft="@+id/namesurname"
         android:layout_alignStart="@+id/namesurname" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="14 min ago"
+        android:id="@+id/minute"
+        android:textSize="10sp"
+        android:layout_alignBottom="@+id/namesurname"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingRight="10dp"/>
 
 
 </RelativeLayout>

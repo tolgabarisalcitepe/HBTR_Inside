@@ -1,7 +1,7 @@
 package com.hbtrinside.hbtrinside.model.ResultObjects;
 
 import com.hbtrinside.hbtrinside.model.ParameterObjects.sonuc;
-import com.hbtrinside.hbtrinside.model.gen_personel;
+import com.hbtrinside.hbtrinside.model.ParameterObjects.gen_personel;
 
 /**
  * Created by DoGan on 11.01.2017.

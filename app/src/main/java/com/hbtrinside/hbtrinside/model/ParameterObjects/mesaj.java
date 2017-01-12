@@ -1,6 +1,5 @@
-package com.hbtrinside.hbtrinside.model;
+package com.hbtrinside.hbtrinside.model.ParameterObjects;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 /**

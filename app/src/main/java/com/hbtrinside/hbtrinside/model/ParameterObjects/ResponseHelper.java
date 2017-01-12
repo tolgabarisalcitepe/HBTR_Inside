@@ -1,4 +1,4 @@
-package com.hbtrinside.hbtrinside;
+package com.hbtrinside.hbtrinside.model.ParameterObjects;
 
 
 import com.google.gson.annotations.SerializedName;

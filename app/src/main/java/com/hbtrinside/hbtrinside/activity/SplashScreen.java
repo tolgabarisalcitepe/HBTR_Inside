@@ -1,4 +1,4 @@
-package com.hbtrinside.hbtrinside;
+package com.hbtrinside.hbtrinside.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.hbtrinside.hbtrinside.R;
 
 
 public class SplashScreen extends Activity {

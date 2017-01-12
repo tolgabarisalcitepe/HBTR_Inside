@@ -1,4 +1,4 @@
-package com.hbtrinside.hbtrinside.model;
+package com.hbtrinside.hbtrinside.model.ParameterObjects;
 
 /**
  * Created by DoGan on 11.01.2017.
@@ -36,19 +36,19 @@ public class mesaj_organizasyon {
         this.MESAJ_ID = MESAJ_ID;
     }
 
-    public com.hbtrinside.hbtrinside.model.gen_organizasyon getGen_organizasyon() {
+    public com.hbtrinside.hbtrinside.model.ParameterObjects.gen_organizasyon getGen_organizasyon() {
         return gen_organizasyon;
     }
 
-    public void setGen_organizasyon(com.hbtrinside.hbtrinside.model.gen_organizasyon gen_organizasyon) {
+    public void setGen_organizasyon(com.hbtrinside.hbtrinside.model.ParameterObjects.gen_organizasyon gen_organizasyon) {
         this.gen_organizasyon = gen_organizasyon;
     }
 
-    public com.hbtrinside.hbtrinside.model.mesaj getMesaj() {
+    public com.hbtrinside.hbtrinside.model.ParameterObjects.mesaj getMesaj() {
         return mesaj;
     }
 
-    public void setMesaj(com.hbtrinside.hbtrinside.model.mesaj mesaj) {
+    public void setMesaj(com.hbtrinside.hbtrinside.model.ParameterObjects.mesaj mesaj) {
         this.mesaj = mesaj;
     }
 

@@ -15,8 +15,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.hbtrinside.hbtrinside.MainActivity;
-import com.hbtrinside.hbtrinside.ResponseHelper;
+import com.hbtrinside.hbtrinside.activity.MainActivity;
+import com.hbtrinside.hbtrinside.model.ParameterObjects.ResponseHelper;
 import com.hbtrinside.hbtrinside.core.RunAsyncTask;
 import com.hbtrinside.hbtrinside.core.Sonuc;
 

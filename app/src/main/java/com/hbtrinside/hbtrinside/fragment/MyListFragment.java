@@ -1,7 +1,6 @@
-package com.hbtrinside.hbtrinside;
+package com.hbtrinside.hbtrinside.fragment;
 
 import android.app.Activity;
-import android.app.ListFragment;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -24,17 +23,20 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.hbtrinside.hbtrinside.R;
+import com.hbtrinside.hbtrinside.activity.MainActivity;
+import com.hbtrinside.hbtrinside.adapter.OzelAdapter;
 import com.hbtrinside.hbtrinside.core.Core;
 import com.hbtrinside.hbtrinside.core.Sonuc;
 import com.hbtrinside.hbtrinside.extended.ExtendedListFragment;
-import com.hbtrinside.hbtrinside.model.gen_personel;
+import com.hbtrinside.hbtrinside.model.ParameterObjects.Kisi;
+import com.hbtrinside.hbtrinside.model.ParameterObjects.mesaj;
 import com.hbtrinside.hbtrinside.model.initialobject.MesajGetirInitParameter;
 import com.hbtrinside.hbtrinside.model.initialobject.MesajGonderInitParameter;
-import com.hbtrinside.hbtrinside.model.initialobject.PersonelBilgisiGetirInitParameter;
-import com.hbtrinside.hbtrinside.model.mesaj;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,13 +50,14 @@ import java.util.List;
 public class MyListFragment extends ExtendedListFragment implements OnItemClickListener,SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
 
     final List<Kisi> kisiler = new ArrayList<Kisi>();
-    private List<mesaj> m_Mesaj = new ArrayList<mesaj>();
+    public List<mesaj> m_Mesaj = new ArrayList<mesaj>();
     private SwipeRefreshLayout swipeRefreshLayout;
     private Context context;
     private MyListFragment ref;
     private MaterialDialog dialog;
     private MaterialDialog dialog2;
     private Toolbar toolbar;
+    private MainActivity m_MainAct;
     private View positiveAction;
     private Toast toast;
     View rootView;
@@ -76,14 +79,15 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
         rootView = inflater.inflate(R.layout.fragment_list, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
         swipeRefreshLayout.setOnRefreshListener(this);
-        mesajGetir();
+        m_MainAct= (MainActivity)this.getActivity();
+        mesajGetir(0,m_Act.genPersonel.SICIL_KOD,1);
         return rootView;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        OzelAdapter adaptorumuz = new OzelAdapter(getActivity(), m_Mesaj);
+        OzelAdapter adaptorumuz = new OzelAdapter(getActivity(), m_Mesaj,this);
         getListView().setAdapter(adaptorumuz);
         getListView().setOnItemClickListener(this);
         getListView().setBackgroundColor(Color.WHITE);
@@ -203,15 +207,16 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
         }
     }
 
-    public void mesajGetir() {
+    public void mesajGetir(int pMesajId,int pSicilKod,int pMesajGuncellemeYon) {
         MesajGetirInitParameter mesajGetirInitParameter = new MesajGetirInitParameter();
-        mesajGetirInitParameter.MesajId = 0;
-        mesajGetirInitParameter.SicilKod = m_Act.genPersonel.SICIL_KOD;
-        mesajGetirInitParameter.MesajGuncellemeYon = 1;
+        mesajGetirInitParameter.MesajId = pMesajId;
+        mesajGetirInitParameter.SicilKod = pSicilKod;//genPersonel.SICIL_KOD;
+        mesajGetirInitParameter.MesajGuncellemeYon = pMesajGuncellemeYon;
 
         Sonuc sonuc = m_App.WebServis(getResources().getString(R.string.BaseURL).concat(
                 getResources().getString(R.string.MobilURL)).concat(
                 getResources().getString(R.string.MesajGetirURL)), mesajGetirInitParameter.Form().toString());
+        m_Mesaj = new ArrayList<mesaj>();
         if (sonuc.sonucKod == 0) {
             MesajGetir(sonuc);
         } else {
@@ -222,6 +227,7 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
 
     protected void MesajGetir(Sonuc p_Sonuc) {
         try {
+
             if (p_Sonuc.sonucKod == 0) {
                 JSONObject JObject = null;
                 JSONArray jsArray = null;
@@ -229,7 +235,7 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
                 try {
                     JObject = new JSONObject(p_Sonuc.sonucBilgisi);
                     jsArray = JObject.getJSONArray("Bilgi");
-                    m_Mesaj = new ArrayList<mesaj>();
+
                     for (int i = 0; i < jsArray.length(); i++) {
                         jArray = jsArray.getJSONObject(i);
                         mesaj Mesaj = new mesaj();
@@ -256,8 +262,8 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
     }
 
     public void MesajGetir2() {
-        mesajGetir();
-        OzelAdapter adaptorumuz = new OzelAdapter(getActivity(), m_Mesaj);
+        mesajGetir(0,m_Act.genPersonel.SICIL_KOD,1);
+        OzelAdapter adaptorumuz = new OzelAdapter(getActivity(), m_Mesaj,this);
         getListView().setAdapter(adaptorumuz);
         getListView().setOnItemClickListener(this);
         getListView().setBackgroundColor(Color.WHITE);

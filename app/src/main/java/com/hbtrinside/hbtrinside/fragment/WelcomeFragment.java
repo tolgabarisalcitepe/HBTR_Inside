@@ -1,4 +1,4 @@
-package com.hbtrinside.hbtrinside;
+package com.hbtrinside.hbtrinside.fragment;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -14,11 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hbtrinside.hbtrinside.R;
 import com.hbtrinside.hbtrinside.core.Core;
 import com.hbtrinside.hbtrinside.core.Sonuc;
-import com.hbtrinside.hbtrinside.extended.ExtendedApplication;
 import com.hbtrinside.hbtrinside.extended.ExtendedFragment;
-import com.hbtrinside.hbtrinside.model.gen_personel;
+import com.hbtrinside.hbtrinside.model.ParameterObjects.gen_personel;
 import com.hbtrinside.hbtrinside.model.initialobject.PersonelBilgisiGetirInitParameter;
 import com.squareup.picasso.Picasso;
 

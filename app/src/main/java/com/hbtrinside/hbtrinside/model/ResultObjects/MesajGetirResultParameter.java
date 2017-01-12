@@ -1,7 +1,7 @@
 package com.hbtrinside.hbtrinside.model.ResultObjects;
 
 import com.hbtrinside.hbtrinside.model.ParameterObjects.sonuc;
-import com.hbtrinside.hbtrinside.model.mesaj;
+import com.hbtrinside.hbtrinside.model.ParameterObjects.mesaj;
 
 /**
  * Created by DoGan on 11.01.2017.

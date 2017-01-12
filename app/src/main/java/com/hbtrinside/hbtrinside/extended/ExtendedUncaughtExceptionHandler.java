@@ -5,7 +5,7 @@ import android.content.res.Resources.NotFoundException;
 import android.os.Build;
 
 import com.hbtrinside.hbtrinside.R;
-import com.hbtrinside.hbtrinside.MainActivity;
+import com.hbtrinside.hbtrinside.activity.MainActivity;
 import com.hbtrinside.hbtrinside.core.HataRapor;
 
 import java.io.PrintWriter;
