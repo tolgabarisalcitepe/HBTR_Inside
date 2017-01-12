@@ -1,0 +1,29 @@
+package com.hbtrinside.hbtrinside.model.ResultObjects;
+
+import com.hbtrinside.hbtrinside.model.ParameterObjects.sonuc;
+import com.hbtrinside.hbtrinside.model.mesaj;
+
+/**
+ * Created by DoGan on 11.01.2017.
+ */
+
+public class MesajGetirResultParameter {
+    public mesaj[] Mesaj;
+    public sonuc Sonuc;
+
+    public mesaj[] getMesaj() {
+        return Mesaj;
+    }
+
+    public void setMesaj(mesaj[] mesaj) {
+        Mesaj = mesaj;
+    }
+
+    public sonuc getSonuc() {
+        return Sonuc;
+    }
+
+    public void setSonuc(sonuc sonuc) {
+        Sonuc = sonuc;
+    }
+}

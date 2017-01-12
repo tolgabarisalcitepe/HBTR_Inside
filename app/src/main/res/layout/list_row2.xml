@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="55dp"
+        android:layout_width="55dp"
+        android:src="@drawable/profilpic"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/grey"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Doğan ARIKAN"
+            android:textStyle="bold"
+            android:id="@+id/namesurname"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"
+            android:layout_marginLeft="70dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="14 min ago"
+            android:id="@+id/minute"
+            android:textSize="10sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="180dp"
+            android:layout_alignTop="@+id/namesurname" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore"
+        android:id="@+id/tweet"
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/namesurname"
+        android:layout_alignLeft="@+id/namesurname"
+        android:layout_alignStart="@+id/namesurname" />
+
+
+
+</RelativeLayout>

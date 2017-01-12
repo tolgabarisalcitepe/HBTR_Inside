@@ -1,0 +1,45 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/ll_login_form"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="phone"
+            android:id="@+id/edt_phone"
+            android:drawableLeft="@android:drawable/ic_dialog_info"
+            android:hint="Mobile Phone Number"
+            android:drawablePadding="10dp"
+            android:layout_gravity="center_horizontal"
+            tools:text="5554787457"
+            android:contentDescription="76868" />
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/edt_sicil_kod"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+            android:hint="Sicil Kod"
+            android:layout_gravity="center_horizontal"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <Button
+        android:text="Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginbtn" />
+</LinearLayout>
