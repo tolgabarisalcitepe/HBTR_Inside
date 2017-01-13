@@ -48,7 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-
+//
 public class MyListFragment extends ExtendedListFragment implements OnItemClickListener,SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
 
     final List<Kisi> kisiler = new ArrayList<Kisi>();
