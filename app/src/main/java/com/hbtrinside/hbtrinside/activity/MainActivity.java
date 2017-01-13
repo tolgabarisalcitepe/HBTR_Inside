@@ -35,6 +35,7 @@ public class MainActivity extends ExtendedAppCompatActivity {
     private String m_SicilKod;
     private String m_MobilNo;
 
+    //deneme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
