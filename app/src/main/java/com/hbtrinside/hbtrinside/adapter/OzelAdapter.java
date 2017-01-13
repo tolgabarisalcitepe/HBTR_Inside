@@ -25,6 +25,7 @@ public class OzelAdapter extends BaseAdapter {
     private Context context;
     private MyListFragment m_Fragment;
 
+
     public OzelAdapter(Activity activity, List<mesaj> Mesajlar, MyListFragment pFragment) {
         //XML'i alıp View'a çevirecek inflater'ı örnekleyelim
         mInflater = (LayoutInflater) activity.getSystemService(

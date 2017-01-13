@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.hbtrinside.hbtrinside.core.Core;
 import com.hbtrinside.hbtrinside.core.Sonuc;
 import com.hbtrinside.hbtrinside.extended.ExtendedAppCompatActivity;
 import com.hbtrinside.hbtrinside.model.ParameterObjects.gen_personel;
+import com.hbtrinside.hbtrinside.model.initialobject.PersonelBilgisiGetirInitParameter;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -45,7 +47,7 @@ public class MainActivity extends ExtendedAppCompatActivity {
         m_Token = m_App.getm_OrtAlan().getString("Token", "");
         m_SicilKod = m_App.getm_OrtAlan().getString("SicilKod", "");
         m_MobilNo = m_App.getm_OrtAlan().getString("MobilNo", "");
-        if (true) {
+        if (m_Token.isEmpty()) {
             displayLogin();
             ActionBar actionBar = getSupportActionBar();
             actionBar.hide();
@@ -54,6 +56,55 @@ public class MainActivity extends ExtendedAppCompatActivity {
             imgFoto.setVisibility(View.INVISIBLE);
             imgProf.setVisibility(View.INVISIBLE);
         } else {
+            Login();
+        }
+    }
+
+    public void Login()
+    {
+        String Token= "";
+        try {
+            Token = m_App.TokenWebServis(getResources().getString(R.string.BaseURL).concat(getResources().getString(R.string.TokenURL)), m_MobilNo);
+        }catch (Exception e)
+        {
+            Toast t = Toast.makeText(getApplicationContext(),
+                    "Token'a giderken Hata oluştu",
+                    Toast.LENGTH_SHORT);
+            t.show();
+        }
+        PersonelBilgisiGetirInitParameter personelBilgisiGetirInitParameter = new PersonelBilgisiGetirInitParameter();
+        personelBilgisiGetirInitParameter.SicilKod = Integer.parseInt(m_SicilKod);
+        personelBilgisiGetirInitParameter.TelNo = m_MobilNo;
+        if(Token.isEmpty())
+        {
+            //TODO ALERT
+            Toast t = Toast.makeText(getApplicationContext(),
+                    "Girdiğiniz Bilgilerde Biri Bulunamadı.",
+                    Toast.LENGTH_SHORT);
+            t.show();
+        }
+        else
+        {
+            Toast t = Toast.makeText(getApplicationContext(),
+                    "Giriş Başarılı....",
+                    Toast.LENGTH_SHORT);
+            t.show();
+            m_App.getm_OrtAlanEditor().putString("Token",Token);
+            m_App.getm_OrtAlanEditor().putString("SicilKod",m_SicilKod);
+            m_App.getm_OrtAlanEditor().putString("MobilNo",m_MobilNo);
+            m_App.getm_OrtAlanEditor().commit();
+            Sonuc sonuc = m_App.WebServis(getResources().getString(R.string.BaseURL).concat(
+                    getResources().getString(R.string.MobilURL)).concat(
+                    getResources().getString(R.string.PersonelURL)),personelBilgisiGetirInitParameter.Form().toString());
+            if(sonuc.sonucKod == 0)
+            {
+                PersonelGetir(sonuc);
+
+            }
+            else
+            {
+                //TODO ALERT
+            }
             displayList();
         }
     }
@@ -74,6 +125,8 @@ public class MainActivity extends ExtendedAppCompatActivity {
         }
 
     }
+
+
 
     private void displayList() {
         ImageView imgProf = (ImageView) findViewById(R.id.profile_image_kisi);

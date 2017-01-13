@@ -6,7 +6,7 @@
 
     <AutoCompleteTextView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="150dp"
         android:id="@+id/dialog_add_what"
         android:hint="Paylaşılacak Bilgiyi Yazınız..."
         android:layout_alignParentTop="true"

@@ -134,6 +134,18 @@ public class ExtendedApplication extends Application {
             public void run() {
                 String line;
                 try {
+                    Url[1] = Url[1].replace("ç","c0x1")
+                            .replace("Ç","C0x1")
+                            .replace("ş","s0x1")
+                            .replace("Ş","S0x1")
+                            .replace("ğ","g0x1")
+                            .replace("Ğ","G0x1")
+                            .replace("ı","i0x1")
+                            .replace("İ","I0x1")
+                            .replace("ö","o0x1")
+                            .replace("Ö","O0x1")
+                            .replace("ü","u0x1")
+                            .replace("Ü","U0x1");
                     String StrURL = Url[0];
                     URL url = new URL(StrURL); //Enter URL here
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -148,7 +160,7 @@ public class ExtendedApplication extends Application {
                     wr.writeBytes(Url[1]);
                     wr.flush();
                     wr.close();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
+                    BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "UTF-8"));
                     line = null;
                     sb = new StringBuilder();
                     while ((line = br.readLine()) != null) {

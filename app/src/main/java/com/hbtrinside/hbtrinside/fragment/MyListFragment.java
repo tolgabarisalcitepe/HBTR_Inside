@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -44,7 +46,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Locale;
 
 
 public class MyListFragment extends ExtendedListFragment implements OnItemClickListener,SwipeRefreshLayout.OnRefreshListener,View.OnClickListener {
@@ -60,6 +62,7 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
     private MainActivity m_MainAct;
     private View positiveAction;
     private Toast toast;
+    //TextToSpeech t1;
     View rootView;
     String[] deneme = null;
     protected static final int RESULT_SPEECH = 1;
@@ -81,6 +84,7 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
         swipeRefreshLayout.setOnRefreshListener(this);
         m_MainAct= (MainActivity)this.getActivity();
         mesajGetir(0,m_Act.genPersonel.SICIL_KOD,1);
+
         return rootView;
     }
 
@@ -96,6 +100,7 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
+        String selected = ((TextView) view.findViewById(R.id.tweet)).getText().toString();
     }
 
     @Override
@@ -145,6 +150,7 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
                         String dialogCountText = ((EditText) dialog.findViewById(R.id.dialog_add_what)).getText().toString();
                         //showToast(dialogCountText);
                         mesajGonder(dialogCountText);
+                        onRefresh();
                     }
                 }).build();
         dialog2.show();
