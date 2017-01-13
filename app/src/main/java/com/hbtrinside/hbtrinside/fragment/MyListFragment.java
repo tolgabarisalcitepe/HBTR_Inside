@@ -227,7 +227,7 @@ public class MyListFragment extends ExtendedListFragment implements OnItemClickL
             MesajGetir(sonuc);
         } else {
             //TODO ALERT
-            showToast("Mesaj Başarıyla Gönderilemedi.");
+       //     showToast("Mesaj Başarıyla Gönderilemedi.");
         }
     }
 

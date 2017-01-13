@@ -24,8 +24,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -134,18 +136,6 @@ public class ExtendedApplication extends Application {
             public void run() {
                 String line;
                 try {
-                    Url[1] = Url[1].replace("ç","c0x1")
-                            .replace("Ç","C0x1")
-                            .replace("ş","s0x1")
-                            .replace("Ş","S0x1")
-                            .replace("ğ","g0x1")
-                            .replace("Ğ","G0x1")
-                            .replace("ı","i0x1")
-                            .replace("İ","I0x1")
-                            .replace("ö","o0x1")
-                            .replace("Ö","O0x1")
-                            .replace("ü","u0x1")
-                            .replace("Ü","U0x1");
                     String StrURL = Url[0];
                     URL url = new URL(StrURL); //Enter URL here
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -157,9 +147,13 @@ public class ExtendedApplication extends Application {
 
 
                     DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
-                    wr.writeBytes(Url[1]);
-                    wr.flush();
-                    wr.close();
+                    BufferedWriter wrt = new BufferedWriter(new OutputStreamWriter(wr,"UTF-8"));
+                    //wr.writeBytes(Url[1]);
+                    //wr.flush();
+                    //wr.close();
+                    wrt.write(Url[1]);
+                    wrt.flush();
+                    wrt.close();
                     BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "UTF-8"));
                     line = null;
                     sb = new StringBuilder();
