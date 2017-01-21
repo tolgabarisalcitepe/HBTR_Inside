@@ -77,7 +77,7 @@ public class WelcomeFragment extends ExtendedFragment implements View.OnClickLis
         }catch (Exception e)
         {
             Toast t = Toast.makeText(getActivity().getApplicationContext(),
-                    "Token'a giderken Hata oluştu",
+                    "Girdiğiniz Bilgilerde Biri Bulunamadı.",
                     Toast.LENGTH_SHORT);
             t.show();
         }

@@ -21,9 +21,8 @@
             android:hint="Mobile Phone Number"
             android:drawablePadding="10dp"
             android:layout_gravity="center_horizontal"
-            tools:text="5554787457"
-            android:contentDescription="76868"
-            android:text="5554787457" />
+
+            />
 
         <EditText
             android:layout_marginTop="10dp"
@@ -34,8 +33,7 @@
             android:drawableLeft="@android:drawable/ic_lock_idle_lock"
             android:hint="Sicil Kod"
             android:layout_gravity="center_horizontal"
-            android:inputType="number"
-            android:text="76868" />
+            android:inputType="number"/>
 
     </LinearLayout>
 
