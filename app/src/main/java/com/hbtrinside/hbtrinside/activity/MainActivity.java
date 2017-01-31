@@ -35,7 +35,7 @@ public class MainActivity extends ExtendedAppCompatActivity {
     private SharedPreferences prefs;
     private String m_Token;
     private String m_SicilKod;
-    private String m_MobilNo;
+    private String m_MesajKod;
 
     //deneme
     @Override
@@ -46,7 +46,7 @@ public class MainActivity extends ExtendedAppCompatActivity {
         setSupportActionBar(toolbar);
         m_Token = m_App.getm_OrtAlan().getString("Token", "");
         m_SicilKod = m_App.getm_OrtAlan().getString("SicilKod", "");
-        m_MobilNo = m_App.getm_OrtAlan().getString("MobilNo", "");
+        m_MesajKod = m_App.getm_OrtAlan().getString("MesajKod","");
         if (m_Token.isEmpty()) {
             displayLogin();
             ActionBar actionBar = getSupportActionBar();
@@ -64,7 +64,7 @@ public class MainActivity extends ExtendedAppCompatActivity {
     {
         String Token= "";
         try {
-            Token = m_App.TokenWebServis(getResources().getString(R.string.BaseURL).concat(getResources().getString(R.string.TokenURL)), m_MobilNo);
+            Token = m_App.TokenWebServis(getResources().getString(R.string.BaseURL).concat(getResources().getString(R.string.TokenURL)),m_SicilKod,m_MesajKod);
         }catch (Exception e)
         {
             Toast t = Toast.makeText(getApplicationContext(),
@@ -74,7 +74,6 @@ public class MainActivity extends ExtendedAppCompatActivity {
         }
         PersonelBilgisiGetirInitParameter personelBilgisiGetirInitParameter = new PersonelBilgisiGetirInitParameter();
         personelBilgisiGetirInitParameter.SicilKod = Integer.parseInt(m_SicilKod);
-        personelBilgisiGetirInitParameter.TelNo = m_MobilNo;
         if(Token.isEmpty())
         {
             //TODO ALERT
@@ -91,7 +90,6 @@ public class MainActivity extends ExtendedAppCompatActivity {
             t.show();
             m_App.getm_OrtAlanEditor().putString("Token",Token);
             m_App.getm_OrtAlanEditor().putString("SicilKod",m_SicilKod);
-            m_App.getm_OrtAlanEditor().putString("MobilNo",m_MobilNo);
             m_App.getm_OrtAlanEditor().commit();
             Sonuc sonuc = m_App.WebServis(getResources().getString(R.string.BaseURL).concat(
                     getResources().getString(R.string.MobilURL)).concat(
@@ -167,20 +165,15 @@ public class MainActivity extends ExtendedAppCompatActivity {
                     genPersonel.SICIL_KOD = jArray.optInt("SICIL_KOD", -1);
                     genPersonel.AD = jArray.getString("AD");
                     genPersonel.SOYAD = jArray.getString("SOYAD");
-                    genPersonel.SIFRE = jArray.getString("SIFRE");
-                    genPersonel.ULKE_KOD = jArray.getString("ULKE_KOD");
                     genPersonel.ORG_NO = jArray.optInt("ORG_NO", -1);
                     genPersonel.SW_BORDRO_ALT_BIRIM = jArray.optInt("SW_BORDRO_ALT_BIRIM", -1);
-                    genPersonel.POZISYON = jArray.getString("POZISYON");
                     genPersonel.CINSIYET = jArray.getString("CINSIYET");
                     genPersonel.DOGUM_TARIHI = Core.StringToDate(jArray.getString("DOGUM_TARIHI"));
                     genPersonel.MEDENI_DURUM = jArray.getString("MEDENI_DURUM");
                     genPersonel.KAN_GRUBU = jArray.getString("KAN_GRUBU");
                     genPersonel.ISE_GIRIS_TARIHI = Core.StringToDate(jArray.getString("ISE_GIRIS_TARIHI"));
                     genPersonel.ISTEN_CIKIS_TARIHI = Core.StringToDate(jArray.getString("ISTEN_CIKIS_TARIHI"));
-                    genPersonel.SIRKET_NO = jArray.optInt("SIRKET_NO", -1);
                     genPersonel.TC_KIMLIK_NO = jArray.getString("TC_KIMLIK_NO");
-                    genPersonel.SSK_NO = jArray.getString("SSK_NO");
                     genPersonel.ADRES = jArray.getString("ADRES");
                     genPersonel.IL = jArray.getString("IL");
                     genPersonel.ILCE = jArray.getString("ILCE");
@@ -188,26 +181,8 @@ public class MainActivity extends ExtendedAppCompatActivity {
                     genPersonel.TEL2 = jArray.getString("TEL2");
                     genPersonel.EMAIL = jArray.getString("EMAIL");
                     genPersonel.EGITIM = jArray.getString("EGITIM");
-                    genPersonel.MUHASEBE_KODU = jArray.optInt("MUHASEBE_KODU", -1);
-                    genPersonel.SW_USTALIK = jArray.optInt("SW_USTALIK", -1);
-                    genPersonel.NAR_HESABI_GRUBU = jArray.getString("NAR_HESABI_GRUBU");
-                    genPersonel.SW_MERKEZ_URETIM = jArray.optInt("SW_MERKEZ_URETIM", -1);
-                    genPersonel.POSTA_KOD = jArray.optInt("POSTA_KOD", -1);
-                    genPersonel.SICIL_KAYNAK = jArray.getString("SICIL_KAYNAK");
-                    genPersonel.YONETICI_1 = jArray.getString("YONETICI_1");
-                    genPersonel.YONETICI_2 = jArray.getString("YONETICI_2");
-                    genPersonel.YONETICI_3 = jArray.getString("YONETICI_3");
-                    genPersonel.SORUMLU_ORG_1 = jArray.optInt("SORUMLU_ORG_1", -1);
-                    genPersonel.SORUMLU_ORG_2 = jArray.optInt("SORUMLU_ORG_2", -1);
-                    genPersonel.SORUMLU_ORG_3 = jArray.optInt("SORUMLU_ORG_3", -1);
-                    genPersonel.CALISMA_GRUBU = jArray.getString("CALISMA_GRUBU");
-                    genPersonel.EKLEYEN_KULLANICI = jArray.optInt("EKLEYEN_KULLANICI", -1);
-                    genPersonel.EKLENEN_TARIH = Core.StringToDate(jArray.getString("EKLENEN_TARIH"));
-                    genPersonel.GUNCELLEYEN_KULLANICI = jArray.optInt("GUNCELLEYEN_KULLANICI", -1);
-                    genPersonel.GUNCELLENEN_TARIH = Core.StringToDate(jArray.getString("GUNCELLENEN_TARIH"));
                     genPersonel.SW_AKTIF = jArray.optInt("SW_AKTIF", -1);
                     genPersonel.POZISYON_ACIKLAMA = jArray.getString("POZISYON_ACIKLAMA");
-                    genPersonel.SAP_ORG_KOD = jArray.optInt("SAP_ORG_KOD", -1);
                     genPersonel.SAP_ORG_ACIKLAMA = jArray.getString("SAP_ORG_ACIKLAMA");
                     genPersonel.BMS_FABRIKA_KOD = jArray.optInt("BMS_FABRIKA_KOD", -1);
                     genPersonel.BMS_URUN_GRUP_KOD = jArray.optInt("BMS_URUN_GRUP_KOD", -1);

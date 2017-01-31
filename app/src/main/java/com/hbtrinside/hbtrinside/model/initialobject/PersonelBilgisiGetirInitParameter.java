@@ -25,7 +25,7 @@ public class PersonelBilgisiGetirInitParameter {
         JSONObject Bilgiler = new JSONObject();
         try {
             Bilgiler.put("SicilKod", SicilKod);
-            Bilgiler.put("TelNo", TelNo);
+            //Bilgiler.put("TelNo", TelNo);
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

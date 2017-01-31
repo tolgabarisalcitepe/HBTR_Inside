@@ -223,7 +223,8 @@ public class ExtendedApplication extends Application {
 
                     String URL = Url[0];
                     Map<String, Object> params = new LinkedHashMap<>();
-                    params.put("password", Url[1]);
+                    params.put("username", Url[1]);
+                    params.put("password", Url[2]);
                     params.put("grant_type", "password");
 
                     StringBuilder postData = new StringBuilder();
